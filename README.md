@@ -9,8 +9,10 @@ read_cookie(name) - returns the value of your of your baked cookie.
 
 delete_cookie(name) - removes the cookie from the browser history.
 
+clear_cookie_store() - clear all cookies
+
 ### usage
 1) Run `npm install --save sfcookies`
 
 2) Import these methods in es6 like so:
-`import { bake_cookie, read_cookie, delete_cookie } from 'sfcookies'`
+`import { bake_cookie, read_cookie, delete_cookie, clear_cookie_store } from 'sfcookies'`

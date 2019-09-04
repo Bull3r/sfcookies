@@ -6,7 +6,8 @@ Object.defineProperty(exports, "__esModule", {
 exports.bake_cookie = bake_cookie;
 exports.read_cookie = read_cookie;
 exports.delete_cookie = delete_cookie;
-function bake_cookie(name, value,date) {
+
+function bake_cookie(name, value, date) {
     let expirey = date instanceof Date ? '; expires='+date : null
     var cookie = [name, '=', JSON.stringify(value), '; domain_.', window.location.host.toString(), '; path=/;',expirey].join('');
     document.cookie = cookie;
@@ -19,6 +20,16 @@ function read_cookie(name) {
     return result;
 }
 
+// delete a cookie according to the given name
 function delete_cookie(name) {
     document.cookie = [name, '=; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; domain.', window.location.host.toString()].join('');
+}
+
+// clear all cookies
+function clear_cookie_store() {
+  var cookies_list = document.cookie.split(';');
+  var exp = new RegExp('^(.*?)\=');
+  for(let i = 0; i < cookies_list.length; i++) {
+    delete_cookie(exp.exec(cookies_list[i])[1]);
+  }
 }
